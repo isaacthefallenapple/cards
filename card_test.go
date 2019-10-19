@@ -27,7 +27,31 @@ func TestNew(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			got := card.New(want.rank, want.val, want.suit)
 			if !equal(got, want) {
-				t.Errorf("%s: got\n\t%+v\nwanted\n\t%+v\n", name, got, want)
+				t.Errorf("Got\n\t%+v\nwanted\n\t%+v\n", got, want)
+			}
+		})
+	}
+}
+
+func TestString(t *testing.T) {
+	tests := map[string]struct {
+		c    card.Card
+		want string
+	}{
+		"Ace of Spades": {
+			c:    card.New(14, 11, card.Spades),
+			want: "\u2660Ace",
+		},
+		"Queen of Hearts": {
+			c:    card.New(card.Queen, 10, card.Hearts),
+			want: "\u2665Queen",
+		},
+	}
+	for name, tc := range tests {
+		t.Run(name, func(t *testing.T) {
+			got := tc.c.String()
+			if want := tc.want; got != want {
+				t.Errorf("Got %q, wanted %q", got, want)
 			}
 		})
 	}
