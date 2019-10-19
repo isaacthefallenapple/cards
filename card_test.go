@@ -17,6 +17,12 @@ func TestNew(t *testing.T) {
 		"2 of Hearts": {
 			rank: 2, val: 2, suit: card.Hearts,
 		},
+		"From const Jack of Clubs": {
+			rank: card.Jack, val: 11, suit: card.Clubs,
+		},
+		"16 of Diamonds": {
+			rank: 16, val: 16, suit: card.Dimaonds,
+		},
 	}
 	equal := func(c card.Card, t wanted) bool {
 		return c.Rank() == t.rank &&
@@ -45,6 +51,14 @@ func TestString(t *testing.T) {
 		"Queen of Hearts": {
 			c:    card.New(card.Queen, 10, card.Hearts),
 			want: "\u2665Queen",
+		},
+		"10 of Clubs": {
+			c:    card.New(10, 10, card.Clubs),
+			want: "\u266310",
+		},
+		"6 of Diamonds": {
+			c:    card.New(6, 6, card.Dimaonds),
+			want: "\u26666",
 		},
 	}
 	for name, tc := range tests {
