@@ -1,9 +1,9 @@
 package card
 
-type suit uint8
+type Suit uint8
 
 const (
-	Clubs suit = iota
+	Clubs Suit = iota
 	Dimaonds
 	Hearts
 	Spades
@@ -11,10 +11,10 @@ const (
 
 type Card struct {
 	rank, value int
-	suit        suit
+	suit        Suit
 }
 
-func New(rank, value int, suit suit) Card {
+func New(rank, value int, suit Suit) Card {
 	return Card{
 		rank:  rank,
 		value: value,
@@ -30,6 +30,6 @@ func (c Card) Value() int {
 	return c.value
 }
 
-func (c Card) Suit() suit {
+func (c Card) Suit() Suit {
 	return c.suit
 }
