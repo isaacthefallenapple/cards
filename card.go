@@ -2,7 +2,7 @@ package card
 
 import "fmt"
 
-type Suit uint8
+type Suit int
 
 const (
 	Clubs Suit = iota
@@ -12,10 +12,10 @@ const (
 )
 
 const (
+	Ace  = 1
 	Jack = iota + 11
 	Queen
 	King
-	Ace
 )
 
 type Card struct {
@@ -47,7 +47,7 @@ func (c Card) String() string {
 	suits := [4]rune{'\u2663', '\u2666', '\u2665', '\u2660'}
 	var name string
 	switch r := c.rank; r {
-	case 14:
+	case 1:
 		name = "Ace"
 	case 13:
 		name = "King"
